@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--[if IE 7]>         <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- CONTENT META -->
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+  
+    <!-- MAIN STYLE SHEET -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+    .container {
+  position: relative;
+}
+
+.deck1 {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: 1317px;
+  height: 415px;
+  overflow: hidden;
+  background: url('images/bg.png') left top no-repeat;
+}
+
+#fft {
+  top: 29px;
+  -webkit-transform: translateX(0) rotateX(0) rotateY(0) !important;
+  width: 1310px !important;
+  left: 3px;
+  position: absolute;
+}
+
+#fft2 {
+  display: none;
+}
+
+.canvas-wrap {
+  width: 200px;
+}
+
+#current-time {
+font-size: 100px;
+position: absolute;
+z-index: 0;
+right: 1em;
+opacity: 0.5;
+font-weight: 400;
+font-family: 'digital-7regular', sans-serif;
+top: 26px;
+left: 97px;
+color: #fff;
+width: 260px;
+text-align: center;
+}
+
+.bgc {
+width: 450px;
+height: 400px;
+background: #171717;
+position: absolute;
+left: 3px;
+}
+
+@font-face {
+    font-family: 'digital-7regular';
+    src: url('css/font/digital-7-webfont.eot');
+    src: url('css/font/digital-7-webfont.eot?#iefix') format('embedded-opentype'),
+         url('css/font/digital-7-webfont.woff') format('woff'),
+         url('css/font/digital-7-webfont.ttf') format('truetype'),
+         url('css/font/digital-7-webfont.svg#digital-7regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+.deck1 {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: 1317px;
+  height: 415px;
+  overflow: hidden;
+  background: url('images/bg.png') left top no-repeat;
+}
+
+
+#fft2 {
+  display: none;
+}
+
+.canvas-wrap {
+  width: 200px;
+}
+
+.bgc {
+width: 450px;
+height: 400px;
+background: #171717;
+position: absolute;
+}
+
+details, aside {
+  display: none;
+}
+.overlay {
+  top: -510px;
+}
+</style>
+
+	<script src="js/libs/modernizr-min.js"></script>
+</head>
+
+<body>
+    
+	<div id="page" class="site">
+
+        <details>
+            <summary>What's this?</summary>
+            <div>
+                <p>Example of the Web Audio API's integration with the HTML5 &lt;audio&gt; element.
+                    See <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/webrtc-integration.html" target="_blank" title="Spec link" alt="Spec link"><code>createMediaSourceElement()</code></a>.</p>
+                    <p><b>Support:</b> Chrome 18.0.1025.2 (currently Canary).</p>
+            </div>
+        </details>
+        <aside>
+            <p>
+                <input type="checkbox" id="toggle-audio" onclick="document.querySelector('#myaudio').classList.toggle('show');"> <label for="toggle-audio">Show &lt;audio&gt; element</label>
+            </p>
+            <div id="myaudio"></div>
+        </aside>
+        
+        <header class="site-header" role="banner">
+            <h1>&nbsp;</h1>
+        </header>
+
+        <section class="site-content" id="content" role="main"><a name="content"></a>
+            <div class="controller">
+                <div class="deck deck-a">
+                    <!-- <div class="effects">
+                        <div class="dial"></div>
+                    </div> -->
+                    
+                    <div class="btn-group top">
+                        <a href="#" class="pitch-down btn-sml"><img src="images/btn-down.jpg" alt=""></a>
+                        <a href="#" class="pitch-up btn-sml"><img src="images/btn-up.jpg" alt=""></a>
+                        <a href="#" class="loop-in btn-sml"><img src="images/btn-in.jpg" alt=""></a>
+                        <a href="#" class="loop-out btn-sml"><img src="images/btn-out.jpg" alt=""></a>
+                    </div>
+                    
+                    <div class="btn-group mid">
+                        <a href="#" class="cue-point-1 btn"><img src="images/btn-1.jpg" alt=""></a>
+                        <a href="#" class="cue-point-2 btn"><img src="images/btn-2.jpg" alt=""></a>
+                        <a href="#" class="cue-point-3 btn"><img src="images/btn-3.jpg" alt=""></a>
+                        <a href="#" class="cue-point-4 btn"><img src="images/btn-4.jpg" alt=""></a>
+                    </div>
+                    
+                    <div class="btn-group bot">
+                        <img class="btn" src="images/btn-shift.jpg" alt="">
+                        <img class="btn" src="images/btn-rec.jpg" alt="">
+                        <a href="#" class="cue btn"><img src="images/btn-cue.jpg" alt=""></a>
+                        <a href="#" class="play btn"><img src="images/btn-play.jpg" alt=""></a>
+                    </div>
+
+                    <audio src="music/shooting-stars.mp3"></audio>
+                </div>
+                <div class="mixer">
+                    <input type="range" class="volume-a" min="0" max="10">
+                    <!-- http://jsfiddle.net/leaverou/BNm8j/ -->
+                    <!-- <input type="range">
+                    <input type="range"> -->
+                </div>
+                <div class="deck deck-b">
+                    <!-- <div class="effects">
+                        <div class="dial"></div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer" role="contentinfo">
+        </footer>
+
+        <section class="wrapper">
+            <div style="margin-top:-350px; margin-left: -200px; visibility: hidden;"><canvas id="playbutton" width="125" height="125"></canvas></div>
+            <div class="container overlay">
+                <div class="canvas-wrap">
+                    <div class="bgc"></div>
+                    <h2 id="current-time"></h2>
+                    <canvas id="fft" class="fft" width="200" height="400"></canvas>
+                </div>
+                <div class="deck1"></div>
+                <canvas id="fft2" class="fft" width="200" height="150"></canvas>
+            </div>
+        </section>
+
+    </div>
+    <!-- #page -->
+
+    <script>
+        (function() {
+            CanvasRenderingContext2D.prototype.line = function(x1, y1, x2, y2) {
+                this.lineCap = 'round';
+                this.beginPath();
+                this.moveTo(x1, y1);
+                this.lineTo(x2, y2);
+                this.closePath();
+                this.stroke();
+            }
+            CanvasRenderingContext2D.prototype.circle = function(x, y, r, fill_opt) {
+                this.beginPath();
+                this.arc(x, y, r, 0, Math.PI * 2, true);
+                this.closePath();
+                if (fill_opt) {
+                    this.fillStyle = 'rgba(0,0,0,1)';
+                    this.fill();
+                    this.stroke();
+                } else {
+                    this.stroke();
+                }
+            }
+            CanvasRenderingContext2D.prototype.rectangle = function(x, y, w, h, fill_opt) {
+                this.beginPath();
+                this.rect(x, y, w, h);
+                this.closePath();
+                if (fill_opt) {
+                    this.fillStyle = 'rgba(0,0,0,1)';
+                    this.fill();
+                } else {
+                    this.stroke();
+                }
+            }
+            CanvasRenderingContext2D.prototype.triangle = function(p1, p2, p3, fill_opt) {
+// Stroked triangle.
+this.beginPath();
+this.moveTo(p1.x, p1.y);
+this.lineTo(p2.x, p2.y);
+this.lineTo(p3.x, p3.y);
+this.closePath();
+if (fill_opt) {
+    this.fillStyle = 'rgba(0,0,0,1)';
+    this.fill();
+} else {
+    this.stroke();
+}
+}
+CanvasRenderingContext2D.prototype.clear = function() {
+    this.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+}
+
+var canvas = document.getElementById('playbutton');
+var ctx = canvas.getContext('2d');
+ctx.lineWidth = 4;
+
+var R = canvas.width / 2;
+var STROKE_AND_FILL = false;
+
+canvas.addEventListener('mouseover', function(e) {
+    if (this.classList.contains('playing')) {
+        drawPauseButton(STROKE_AND_FILL);
+    } else {
+        drawPlayButton(STROKE_AND_FILL);
+    }
+    ctx.save();
+    ctx.lineWidth += 3;
+    ctx.circle(R, R, R - ctx.lineWidth + 1);
+    ctx.restore();
+}, true);
+
+canvas.addEventListener('mouseout', function(e) {
+    if (this.classList.contains('playing')) {
+        drawPauseButton(STROKE_AND_FILL);
+    } else {
+        drawPlayButton(STROKE_AND_FILL);
+    }
+}, true);
+
+canvas.addEventListener('click', function(e) {
+    this.classList.toggle('playing');
+    if (this.classList.contains('playing')) {
+        drawPauseButton(STROKE_AND_FILL);
+        audio.play();
+    } else {
+        drawPlayButton(STROKE_AND_FILL);
+        audio.pause();
+    }
+}, true);
+
+function drawPlayButton(opt_fill) {
+    ctx.clear();
+    ctx.circle(R, R, R - ctx.lineWidth + 1, opt_fill);
+    ctx.triangle({x: R*0.8, y: R*0.56}, {x: R*1.45, y: R}, {x: R*0.8, y: R*1.45}, true);
+}
+
+function drawPauseButton(opt_fill) {
+    ctx.clear();
+    ctx.circle(R, R, R - ctx.lineWidth + 1, opt_fill);
+    ctx.save();
+    ctx.lineWidth += 4;
+    ctx.line(R*0.8, R/2, R*0.8, R*1.5);
+    ctx.line(R+(R/5), R/2, R+(R/5), R*1.5);
+    ctx.restore();
+}
+drawPlayButton(STROKE_AND_FILL);
+
+window.playButton = canvas;
+})();
+
+(function() {
+    var canvas = document.getElementById('fft');
+    var ctx = canvas.getContext('2d');
+    canvas.width = document.body.clientWidth / 1.4;
+
+    var canvas2 = document.getElementById('fft2');
+    var ctx2 = canvas2.getContext('2d');
+    canvas2.width = canvas.width;
+
+    const CANVAS_HEIGHT = canvas.height;
+    const CANVAS_WIDTH = canvas.width;
+
+    window.audio = new Audio();
+// audio.src = 'http://www.html5rocks.com/en/tutorials/audio/quick/test.ogg';
+// audio.src = 'hint.mp3';
+audio.src = 'music/shooting-stars.mp3';
+audio.controls = true;
+//audio.autoplay = true;
+audio.loop = true;
+
+var currenTimeNode = document.querySelector('#current-time');
+audio.addEventListener('timeupdate', function(e) {
+    var currTime = audio.currentTime;
+    currenTimeNode.textContent = parseInt(currTime / 60) + ':' + parseInt(currTime % 60);
+}, false);
+
+document.querySelector('#myaudio').appendChild(audio);
+
+// Check for non Web Audio API browsers.
+if (!window.webkitAudioContext) {
+    alert("Web Audio isn't available in your browser. But...you can still play the HTML5 audio :)");
+    document.querySelector('#myaudio').classList.toggle('show');
+    document.querySelector('aside').style.marginTop = '7em';
+    return;
+}
+
+var context = new webkitAudioContext();
+var analyser = context.createAnalyser();
+
+function rafCallback(time) {
+    window.webkitRequestAnimationFrame(rafCallback, canvas);
+
+    var freqByteData = new Uint8Array(analyser.frequencyBinCount);
+analyser.getByteFrequencyData(freqByteData); //analyser.getByteTimeDomainData(freqByteData);
+
+var SPACER_WIDTH = 10;
+var BAR_WIDTH = 5;
+var OFFSET = 100;
+var CUTOFF = 23;
+var numBars = Math.round(CANVAS_WIDTH / SPACER_WIDTH);
+
+ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+ctx.fillStyle = '#eeb400';
+ctx.lineCap = 'round';
+
+ctx2.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+ctx2.fillStyle = '#3A5E8C';
+ctx2.lineCap = 'round';
+
+// Draw rectangle for each frequency bin.
+/*for (var i = 0; i < numBars / 2 - CUTOFF; ++i) {
+var magnitude = freqByteData[i + OFFSET];
+ctx.fillRect(i * SPACER_WIDTH, CANVAS_HEIGHT, BAR_WIDTH, -magnitude);
+}
+for (var i = numBars / 2 + CUTOFF; i < numBars; ++i) {
+var magnitude = freqByteData[i + OFFSET];
+ctx2.fillRect(i * SPACER_WIDTH, CANVAS_HEIGHT, BAR_WIDTH, -magnitude);
+}*/
+for (var i = 0; i < numBars; ++i) {
+    var magnitude = freqByteData[i + OFFSET];
+    ctx.fillRect(i * SPACER_WIDTH, CANVAS_HEIGHT, BAR_WIDTH, -magnitude);
+    ctx2.fillRect(i * SPACER_WIDTH, CANVAS_HEIGHT, BAR_WIDTH, -magnitude);
+}
+}
+
+function onLoad(e) {
+    var source = context.createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(context.destination);
+
+    rafCallback();
+}
+
+// Need window.onload to fire first. See crbug.com/112368.
+window.addEventListener('load', onLoad, false);
+})();
+
+window.addEventListener('keydown', function(e) {
+if (e.keyCode == 32) { // space
+// Simulate link click on an element.
+var evt = document.createEvent('Event');
+evt.initEvent('click', false, false);
+window.playButton.dispatchEvent(evt);
+}
+}, false);
+</script>
+  	
+    <!-- scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.8.3.min.js"%3E%3C/script%3E'))</script>
+    <script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+  
+</body>
+</html>

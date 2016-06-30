@@ -1,0 +1,191 @@
+/* Normalize CSS */
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}audio,canvas,video{display:inline;zoom:1px;}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}body,button,input,select,textarea{font-family:sans-serif;}a{color:#00e;}a:visited{color:#551a8b;}a:focus{outline:thin dotted;}a:hover,a:active{outline:0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}blockquote{margin:1em 40px;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}pre,code,kbd,samp{font-family:monospace, serif;_font-family:'courier new', monospace;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:none;}q:before,q:after{content:none;}small{font-size:75%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}ul,ol{margin:1em 0;padding:0 0 0 40px;}dd{margin:0 0 0 40px;}nav ul,nav ol{list-style:none;list-style-image:none;}img{border:0;-ms-interpolation-mode:bicubic;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;margin-left:-7px;}button,input,select,textarea{font-size:100%;vertical-align:middle;margin:0;}button,input{line-height:normal;}button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;overflow:visible;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}audio:not([controls]),[hidden]{display:none;}body,figure,form{margin:0;}sup,sub{vertical-align:baseline;position:relative;top:-0.4em;}sub{top:0.4em;}
+
+/* STYLE CSS */
+html {font-size: 62.5%; -webkit-font-smoothing: antialiased;}
+body {background: url(../images/night-club.jpg) no-repeat; background-size: cover; color:#000; font-size: 14px; font-size: 1.4rem; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+
+/* LINKS */
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+::selection { color: white; background-color: #333;}
+::-moz-selection { color: white; background-color: #333;}
+
+/* LAYOUT */
+.site { width: 1350px; margin: 0 auto; }
+
+.controller {
+  width: 1323px;
+  height: 873px;
+  background: url(../images/decks-full.png) no-repeat;
+  overflow: hidden;
+}
+.deck {
+  width: 510px;
+  float: left;
+  height: 873px;
+  position: relative;
+}
+.mixer {
+  float: left;
+  width: 310px;
+  height: 873px;
+  position: relative;
+}
+
+
+.btn-group { overflow: hidden;}
+
+.top {
+  position: absolute;
+  bottom: 229px;
+  left: 137px;
+}
+
+.mid {
+  position: absolute;
+  bottom: 143px;
+  left: 137px;
+}
+.bot {
+  position: absolute;
+  bottom: 67px;
+  left: 137px;
+}
+.btn-group .btn {
+  margin-right: 16px;
+}
+.btn-group .btn-sml {
+  margin-right: 17px;
+}
+
+.btn:active, .btn-sml:active {
+  position: relative;
+  top:1px;
+}
+
+.active img {
+  opacity: 0.5;
+}
+
+
+.volume-a {
+  position: absolute;
+  bottom: 245px;
+  left: -37px;
+  -webkit-transform: rotate(-90deg);
+}
+input[type='range'] {
+    -webkit-appearance: none !important;
+    background:#000;
+    height: 14px;
+    width: 140px;
+}
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: -webkit-linear-gradient(left, rgba(101,101,101,1) 0%,rgba(101,101,101,1) 44%,rgba(255,255,255,1) 44%,rgba(255,255,255,1) 54%,rgba(101,101,101,1) 54%,rgba(101,101,101,1) 100%); /* Chrome10+,Safari5.1+ */
+    height:61px;
+    width:33px;
+}
+
+
+/*.dial {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background: #7A7A7A;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #555, inset 0 0 5px 0px #000000;
+  position: relative;
+}
+.dial:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  margin-left: -1px;
+  height: 6px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.63);
+}*/
+
+/* GENERAL CLASSES */
+.visually-hidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visually-hidden.focusable:active, .visually-hidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.text-offscreen {text-indent: 100%; white-space: nowrap; overflow: hidden; }
+.hidden { display: none !important; visibility: hidden; }
+.clear { clear:both; display:block; margin:0; padding:0; height:0; line-height:1px; font-size:1px }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+.left {float: left;}
+.right {float: right;}
+.clear-left {clear: left;}
+.clear-right {clear: right;}
+.align-right { text-align: right;}
+.img-left {float: left;margin: 0 15px 15px 0;}
+.img-right {float: right;margin: 0 0 15px 15px;}
+.last { margin-right:0 !important;}
+
+.no-marg {margin: 0;}
+.no-marg-btm {margin-bottom: 0;}
+
+/* Grid % */
+.one-half, .one-third, .two-third, .one-fourth, .three-fourth, .full-width {float: left; margin-right: 3%;}
+.one-half.last, .one-third.last, .two-third.last, .one-fourth.last, .three-fourth.last {margin-right: 0;}
+.one-half {width: 48.5%;}
+.one-third {width: 31%;}
+.two-third {width: 65%;}
+.one-fourth {width: 22.5%;}
+.three-fourth {width: 73.5%;}
+
+/* Grid 
+.one-half, .one-third, .two-third, .one-fourth, .three-fourth {float: left; margin-right: 20px;}
+.one-half.last, .one-third.last, .two-third.last, .one-fourth.last, .three-fourth.last {margin-right: 0;}
+.one-half {width: 460px;}
+.one-third {width: 300px;}
+.two-third {width: 620px;}
+.one-fourth {width: 220px;}
+.three-fourth {width: 700px;}
+*/
+
+
+
+
+
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+}
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+}
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+}
+/* iPhone Retina Images */
+@media screen and (-webkit-min-device-pixel-ratio : 1.5),
+screen and (min-device-pixel-ratio : 1.5) {
+}
+
+
+/* PRINT */
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
